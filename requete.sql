@@ -38,3 +38,16 @@ ORDER BY posfou DESC, nomfou ASC;
 SELECT datcom AS 'commande passées'
 FROM entcom
 WHERE datcom LIKE '____-03-__%' OR datcom LIKE '____-04-__%';
+
+-- 7
+
+SELECT numcom AS 'numéro de commande', datcom AS 'date de commande'
+FROM entcom
+WHERE obscom <> '';
+
+-- 8
+
+SELECT numcom AS 'commandes', (qtecde * priuni) AS 'Total'
+FROM ligcom
+ORDER BY Total DESC;
+
