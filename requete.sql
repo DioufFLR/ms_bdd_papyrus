@@ -56,13 +56,29 @@ ORDER BY Total DESC;
 
 SELECT numcom AS 'numéro de commande', (priuni * qteliv) AS 'total'
 FROM ligcom
-WHERE (priuni * qteliv) > 10000 AND qteliv >= 1000
+WHERE (priuni * qteliv) > 10000 AND qteliv >= 1000;
 
 -- 10
 
 SELECT nomfou AS 'nom fournisseur', numcom AS 'numéro de commande', datcom AS 'date de commande'
 FROM entcom
 JOIN fournis ON fournis.numfou = entcom.numfou
-GROUP BY nomfou
+GROUP BY nomfou;
 
 -- 11
+
+SELECT ligcom.numcom, nomfou, libart, SUM(qtecde * priuni) AS 'Sous total'
+FROM produit
+JOIN ligcom ON ligcom.codart = produit.codart
+JOIN entcom ON entcom.numcom = ligcom.numcom
+JOIN fournis ON fournis.numfou = entcom.numfou
+WHERE obscom LIKE 'Commande urgente'
+GROUP BY libart;
+
+-- 12
+
+SELECT nomfou AS 'nom fournisseur', COUNT(DISTINCT vente.codart) AS 'nombre de commande'
+FROM fournis
+JOIN vente ON vente.numfou = fournis.numfou
+GROUP BY fournis.nomfou
+HAVING COUNT(vente.numfou) > 1;
