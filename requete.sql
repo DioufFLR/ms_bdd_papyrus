@@ -51,3 +51,18 @@ SELECT numcom AS 'commandes', (qtecde * priuni) AS 'Total'
 FROM ligcom
 ORDER BY Total DESC;
 
+
+-- 9
+
+SELECT numcom AS 'numéro de commande', (priuni * qteliv) AS 'total'
+FROM ligcom
+WHERE (priuni * qteliv) > 10000 AND qteliv >= 1000
+
+-- 10
+
+SELECT nomfou AS 'nom fournisseur', numcom AS 'numéro de commande', datcom AS 'date de commande'
+FROM entcom
+JOIN fournis ON fournis.numfou = entcom.numfou
+GROUP BY nomfou
+
+-- 11
