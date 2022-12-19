@@ -82,3 +82,14 @@ FROM fournis
 JOIN vente ON vente.numfou = fournis.numfou
 GROUP BY fournis.nomfou
 HAVING COUNT(vente.numfou) > 1;
+
+-- 13
+
+SELECT numcom AS 'numéro de commande', datcom AS 'date commande'
+FROM entcom
+WHERE numfou IN(
+    SELECT numfou
+    FROM entcom
+    WHERE numcom = 70210
+);
+
