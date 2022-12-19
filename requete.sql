@@ -93,3 +93,24 @@ WHERE numfou IN(
     WHERE numcom = 70210
 );
 
+-- 14
+
+SELECT codart, prix1 AS 'p1'
+FROM vente
+WHERE 'p1' < 'p2' AND prix1 IN(
+    SELECT prix1 AS 'p2'
+    FROM produit
+    WHERE codart IN(
+    	SELECT codart
+        FROM produit
+        WHERE codart LIKE 'r%'
+    )
+);
+
+SELECT libart, prix1
+FROM produit
+JOIN vente ON vente.codart = produit.codart
+WHERE prix1 < 120;
+
+-- 15
+
