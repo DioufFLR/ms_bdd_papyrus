@@ -114,3 +114,8 @@ WHERE prix1 < 120;
 
 -- 15
 
+SELECT libart AS 'produit', nomfou AS 'fournisseur' 
+FROM produit
+JOIN vente ON vente.codart = produit.codart
+JOIN fournis ON fournis.numfou = vente.numfou
+WHERE produit.stkphy <= (produit.stkale * 1.5);
