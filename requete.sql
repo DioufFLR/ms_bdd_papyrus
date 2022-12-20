@@ -148,3 +148,7 @@ ORDER BY qteann DESC;
 
 -- 19
 
+SELECT numfou AS 'fournisseur', ((priuni * qtecde)* 1.20) AS 'ca'
+FROM entcom 
+JOIN ligcom ON ligcom.numcom = entcom.numcom
+GROUP BY numfou;
