@@ -1,4 +1,4 @@
--- Exercice Les besoins d'affichage
+-- PARTIE 1 Exercice Les besoins d'affichage
 
 -- 1
 
@@ -152,3 +152,6 @@ SELECT numfou AS 'fournisseur', ((priuni * qtecde)* 1.20) AS 'ca'
 FROM entcom 
 JOIN ligcom ON ligcom.numcom = entcom.numcom
 GROUP BY numfou;
+
+-- PARTIE 2 Mise à jour de données
+
