@@ -163,3 +163,21 @@ WHERE numfou = 9180;
 
 -- 2
 
+UPDATE vente
+SET vente.prix2 = vente.prix1
+WHERE vente.prix2 = 0;
+
+-- 3
+
+UPDATE entcom
+JOIN fournis ON fournis.numfou = entcom.numfou
+SET entcom.obscom = '*****'
+WHERE fournis.satisf < 5;
+
+-- 4
+
+DELETE FROM vente
+WHERE codart 
+IN
+    (SELECT codart FROM produit 
+    WHERE (codart LIKE 'I110%'));
