@@ -143,4 +143,8 @@ ORDER BY stkphy DESC
 SELECT libart AS 'produit', qteann AS 'quantité annuelle', qtecde 
 FROM produit
 JOIN ligcom ON ligcom.codart = produit.codart
-WHERE (qtecde * 0.9) > qteann
+WHERE qtecde > (qteann * 0.9)
+ORDER BY qteann DESC;
+
+-- 19
+
