@@ -155,3 +155,11 @@ GROUP BY numfou;
 
 -- PARTIE 2 Mise à jour de données
 
+-- 1
+
+UPDATE vente
+SET vente.prix1 = vente.prix1 * 1.04 AND vente.prix2 = vente.prix2 * 1.02
+WHERE numfou = 9180;
+
+-- 2
+
