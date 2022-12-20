@@ -119,3 +119,28 @@ FROM produit
 JOIN vente ON vente.codart = produit.codart
 JOIN fournis ON fournis.numfou = vente.numfou
 WHERE produit.stkphy <= (produit.stkale * 1.5);
+
+-- 16
+
+SELECT  nomfou AS 'fournisseur', libart AS 'libelle' 
+FROM produit
+JOIN vente ON vente.codart = produit.codart
+JOIN fournis ON fournis.numfou = vente.numfou
+JOIN entcom ON entcom.numfou = fournis.numfou
+WHERE produit.stkphy <= (produit.stkale * 1.5) AND vente.delliv <= 30;  
+
+-- 17
+
+SELECT  nomfou AS 'fournisseur', stkphy AS 'total stock'
+FROM produit
+JOIN vente ON vente.codart = produit.codart
+JOIN fournis ON fournis.numfou = vente.numfou
+GROUP BY fournisseur
+ORDER BY stkphy DESC
+
+-- 18
+
+SELECT libart AS 'produit', qteann AS 'quantité annuelle', qtecde 
+FROM produit
+JOIN ligcom ON ligcom.codart = produit.codart
+WHERE (qtecde * 0.9) > qteann
